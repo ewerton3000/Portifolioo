@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<title>Formulário do CRUD</title>
+</head>
+<body>
+
+<!--Formulario-->
+<div class="container">
+	<form action="?controller=ContatosController&<?php echo isset($contato->id) ?"method=atualizar&id={$contato->id}" :"method=salvar"; ?>" method="post">
+		<div class="card-header">
+		<span class="card-title">Contatos</span>	
+		<div class="card-body">
+		</div>
+		<div class="form-group form-row">
+			<label class="col-sm-2 col-form-label text-right">Nome:</label>
+			<input type="text" class="form-control col-sm-8" name="nome" id="nome" value="<?php
+			 echo isset($contato->nome) ? $contato->nome : null;  ?>"/>
+		</div>
+		<div class="form-group form-row">
+			<label class="col-sm-2 col-form-label text-right">Telefone:</label>
+			<input type="text" class="form-control col-sm-8" name="telefone" id="telefone" value="<?php echo 
+			isset($contato->telefone) ? $contato->telefone : null; ?>"/>
+		</div>
+        <div class="card-footer">
+        	<input type="hidden" name="id" id="id" value="<?php echo isset($contato->id) ? $contato->id :null;?>"/>
+        	<button class="btn btn-success" type="submit">Salvar</button>
+        	<button class="btn btn-secondary">Limpar</button>
+        	<a class="btn btn-danger" href="?controller=ContatosController&method=listar">Cancelar</a>
+    </div>
+</div>
+	</form>
+	<!--fim do formulario-->
+</div>
+</body>
+</html>
